@@ -4,6 +4,7 @@ import 'package:whatsapp/models/chat_model.dart';
 
 class MessagePage extends StatefulWidget {
   const MessagePage({super.key, this.chatModel});
+  // VARIABLES
   final ChatModel? chatModel;
 
   @override

@@ -6,6 +6,8 @@ import 'package:whatsapp/pages/message_page.dart';
 class CustomCard extends StatelessWidget {
   const CustomCard({super.key, this.chatModel});
 
+  // VARIABLES
+
   final ChatModel? chatModel;
 
   @override

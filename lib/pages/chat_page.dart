@@ -11,6 +11,7 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
+  // LIST
   List<ChatModel> chats = [
     ChatModel(
       name: "Friends",
