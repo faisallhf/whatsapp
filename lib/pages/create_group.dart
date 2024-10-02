@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/customui/avatar_card.dart';
 import 'package:whatsapp/customui/contact_card.dart';
 import 'package:whatsapp/models/chat_model.dart';
 
@@ -16,11 +17,11 @@ class CreateGroupState extends State<CreateGroup> {
       status: "I am a Flutter Developer",
     ),
     ChatModel(
-      name: "Asfand yar Ali Khan",
+      name: "Asfand Khan",
       status: "I am a UI/UX Designer",
     ),
     ChatModel(
-      name: "Flutter Developer",
+      name: "Flutter Dev",
       status: "I am a Web Developer",
     ),
     ChatModel(
@@ -28,11 +29,11 @@ class CreateGroupState extends State<CreateGroup> {
       status: "I am a Flutter Developer",
     ),
     ChatModel(
-      name: "Asfand yar Ali Khan",
+      name: "Asfand Khan",
       status: "I am a UI/UX Designer",
     ),
     ChatModel(
-      name: "Flutter Developer",
+      name: "Flutter Dev",
       status: "I am a Web Developer",
     ),
     ChatModel(
@@ -40,11 +41,11 @@ class CreateGroupState extends State<CreateGroup> {
       status: "I am a Flutter Developer",
     ),
     ChatModel(
-      name: "Asfand yar Ali Khan",
+      name: "Asfand Khan",
       status: "I am a UI/UX Designer",
     ),
     ChatModel(
-      name: "Flutter Developer",
+      name: "Flutter Dev",
       status: "I am a Web Developer",
     ),
     ChatModel(
@@ -52,14 +53,15 @@ class CreateGroupState extends State<CreateGroup> {
       status: "I am a Flutter Developer",
     ),
     ChatModel(
-      name: "Asfand yar Ali Khan",
+      name: "Asfand Khan",
       status: "I am a UI/UX Designer",
     ),
     ChatModel(
-      name: "Flutter Developer",
+      name: "Flutter Dev",
       status: "I am a Web Developer",
     ),
   ];
+  List<ChatModel> groupmember = [];
   List<ChatModel> groups = [];
   @override
   Widget build(BuildContext context) {
@@ -99,28 +101,66 @@ class CreateGroupState extends State<CreateGroup> {
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: contacts.length,
-        itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () {
-              if (contacts[index].select == false) {
-                setState(() {
-                  contacts[index].select = true;
-                  groups.add(contacts[index]);
-                });
-              } else {
-                setState(() {
-                  contacts[index].select = false;
-                  groups.remove(contacts[index]);
-                });
+      body: Stack(
+        children: [
+          ListView.builder(
+            itemCount: contacts.length + 1,
+            itemBuilder: (context, index) {
+              if (index == 0) {
+                return Container(
+                  height: groups.length > 0 ? 90 : 10,
+                );
               }
+              return InkWell(
+                onTap: () {
+                  if (contacts[index - 1].select == false) {
+                    setState(() {
+                      contacts[index - 1].select = true;
+                      groups.add(contacts[index - 1]);
+                    });
+                  } else {
+                    setState(() {
+                      contacts[index - 1].select = false;
+                      groups.remove(contacts[index - 1]);
+                    });
+                  }
+                },
+                child: ContactCard(
+                  contact: contacts[index - 1],
+                ),
+              );
             },
-            child: ContactCard(
-              contact: contacts[index],
-            ),
-          );
-        },
+          ),
+          groups.length > 0
+              ? Column(
+                  children: [
+                    Container(
+                      height: 75,
+                      color: Colors.white,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: contacts.length,
+                        itemBuilder: (context, index) {
+                          if ((contacts[index].select == true)) {
+                            return InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    contacts[index].select = false;
+                                    groups.remove(contacts[index]);
+                                  });
+                                },
+                                child: AvatarCard(contact: contacts[index]));
+                          } else {
+                            return Container();
+                          }
+                        },
+                      ),
+                    ),
+                    Divider(thickness: 1),
+                  ],
+                )
+              : Container(),
+        ],
       ),
     );
   }

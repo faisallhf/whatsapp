@@ -18,11 +18,11 @@ class _SelectContactState extends State<SelectContact> {
       status: "I am a Flutter Developer",
     ),
     ChatModel(
-      name: "Asfand yar Ali Khan",
+      name: "Asfand Khan",
       status: "I am a UI/UX Designer",
     ),
     ChatModel(
-      name: "Flutter Developer",
+      name: "Flutter Dev",
       status: "I am a Web Developer",
     ),
     ChatModel(
@@ -30,11 +30,11 @@ class _SelectContactState extends State<SelectContact> {
       status: "I am a Flutter Developer",
     ),
     ChatModel(
-      name: "Asfand yar Ali Khan",
+      name: "Asfand Khan",
       status: "I am a UI/UX Designer",
     ),
     ChatModel(
-      name: "Flutter Developer",
+      name: "Flutter Dev",
       status: "I am a Web Developer",
     ),
   ];

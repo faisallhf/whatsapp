@@ -35,7 +35,7 @@ class _ChatPageState extends State<ChatPage> {
       icon: "person.svg",
     ),
     ChatModel(
-      name: "Asfand Yar Ali Khan",
+      name: "Asfand Khan",
       isGroup: false,
       current_message: "Hi there",
       time: "07:45",
